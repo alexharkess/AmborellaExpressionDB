@@ -14,7 +14,8 @@ shinyServer(function(input,output) {
 	
 	output$genePlot  = renderPlot( { 
 		myGene = getData()
-		return(expressionPlot(myGene, replicates=T))
+		genetmp<-expressionPlot(myGene,replicates=T)
+		return(genetmp + labs(title="") + xlab("") + theme(legend.position="none") )
 		
 	})  
  
