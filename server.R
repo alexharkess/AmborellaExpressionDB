@@ -14,8 +14,11 @@ shinyServer(function(input,output) {
 	
 	output$genePlot  = renderPlot( { 
 		myGene = getData()
+		if (is.null(myGene))
+	  return(plot(1,type="n",bty="n",yaxt="n",xaxt="n",ylab="",xlab=""))
+
 		genetmp<-expressionPlot(myGene,replicates=T)
-		return(genetmp + labs(title="") + xlab("") + theme(legend.position="none") )
+		return(genetmp + labs(title="") + xlab("") + theme(legend.position="none",axis.text=element_text(size=14) ))
 		
 	})  
  
