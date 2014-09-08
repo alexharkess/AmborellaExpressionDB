@@ -16,10 +16,13 @@ shinyServer(function(input,output) {
 		myGene = getData()
 		if (is.null(myGene))
 	  return(plot(1,type="n",bty="n",yaxt="n",xaxt="n",ylab="",xlab=""))
-
-		genetmp<-expressionPlot(myGene,replicates=T)
+	  
+	   output$value <- renderPrint({ input$checkbox })
+		genetmp<-expressionPlot(myGene,replicates=TRUE)
 		return(genetmp + labs(title="") + xlab("") + theme(legend.position="none",axis.text=element_text(size=14) ))
 		
 	})  
+	
+	
  
 })
